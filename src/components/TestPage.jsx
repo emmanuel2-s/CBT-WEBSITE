@@ -79,7 +79,7 @@ function TestPage() {
   if (isFinished) {
     return (
       <div className="max-w-lg mx-auto w-full">
-        <div className="bg-white p-8 mt-16 md:mt-56">
+        <div className="bg-white p-8 mt-10 md:mt-24">
           <h1 className="text-4xl text-center font-medium text-gray-500 mb-6">
             Congratulations!
           </h1>
@@ -113,7 +113,7 @@ function TestPage() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       {!isStarted ? (
-        <div className="text-center p-8 max-w-6xl w-full mx-auto bg-white shadow-md rounded-lg">
+        <div className="text-center p-8 max-w-5xl w-full mx-auto mt-10 bg-white shadow-md rounded-lg">
           <h1 className="text-3xl font-bold mb-4">Welcome to the Exam</h1>
           <div className="text-left font-sans mb-6">
             <h4 className="text-3xl mb-3">Practice mode</h4>

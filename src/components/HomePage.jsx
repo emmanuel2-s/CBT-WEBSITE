@@ -25,7 +25,7 @@ function HomePage() {
         />
       </div>
 
-      <div className="w-full md:flex md:justify-center md:items-center my-12 gap-6 max-w-[1440px] mx-auto">
+      <div className="w-full md:flex md:justify-center md:items-center my-12 gap-6 max-w-[1340px] mx-auto">
         <div className="bg-white shadow rounded h-full py-6 w-4/12 p-4">
           <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
             <MdComputer size={50} />
