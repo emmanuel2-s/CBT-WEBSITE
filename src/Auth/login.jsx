@@ -13,7 +13,7 @@ function Login() {
   };
   return (
     <div className="max-w-lg mx-auto w-full">
-      <div className="bg-white h-[600px] mt-28 px-4 mb-3 py-12 shadow-md">
+      <div className="bg-white mt-28 px-4 mb-3 py-12 shadow-md">
         <h2 className="text-center text-3xl uppercase font-semibold py-6 leading-10">
           Member Login
         </h2>
