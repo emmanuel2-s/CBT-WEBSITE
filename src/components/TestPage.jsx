@@ -111,18 +111,22 @@ function TestPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen">
       {!isStarted ? (
-        <div className="text-center p-8 max-w-5xl w-full mx-auto mt-10 bg-white shadow-md rounded-lg">
-          <h1 className="text-3xl font-bold mb-4">Welcome to the Exam</h1>
-          <div className="text-left font-sans mb-6">
+        <div className="text-center max-w-5xl p-8 w-full mx-auto mt-10 bg-white shadow-md rounded-lg">
+          <h1 className="text-4xl font-medium mb-6 leading-10">
+            Welcome to the Exam
+          </h1>
+          <div className="text-left font-medium mb-6">
             <h4 className="text-3xl mb-3">Practice mode</h4>
             <p>Total Number of Questions: 50</p>
             <p>Total Time Given: 35 mins </p>
           </div>
           <div>
-            <h4 className="text-3xl mb-3 text-left">CBT Instructions</h4>
-            <p className="text-left font-serif">
+            <h4 className="text-3xl mb-3 text-left font-medium">
+              CBT Instructions
+            </h4>
+            <p className="text-left font-medium">
               You will be given 20 questions in English Language and 10
               questions on each of the other subjects (a total of 50 questions).
               The questions will be presented 1 each in series starting with
@@ -132,12 +136,12 @@ function TestPage() {
               can click on "Quit Exam" to see your performance analysis.
             </p>
 
-            <p className="text-left font-serif py-4">
+            <p className="text-left font-medium py-4">
               You will be given 35 mins to answer all 50 questions and submit.
               If at any point, you're unable to finish on time, you will be
               automatically shown the summary of your performance.
             </p>
-            <p className="text-left font-serif py-2">
+            <p className="text-left font-medium py-2">
               Your ranking will be based on a cumulative of all your scores this
               week and the number of free exams written. The time taken to
               finish each exam will also be taken into consideration. So you
@@ -149,13 +153,13 @@ function TestPage() {
           </div>
           <button
             onClick={handleStart}
-            className="px-16 py-2 mt-8 bg-gray-600 text-white rounded hover:bg-gray-400 focus:outline-none"
+            className="px-16 py-2 mt-8 bg-gray-600 text-white rounded hover:bg-gray-800 focus:outline-none"
           >
             Start exam
           </button>
         </div>
       ) : (
-        <div className=" max-w-[1440px] w-9/12 mx-auto p-16 bg-white shadow-md rounded-lg">
+        <div className="container mx-auto p-16 bg-white shadow-md rounded-lg">
           <h2 className="text-xl font-semibold mb-4">
             Question {currentQuestionIndex + 1} of {questions.length}
           </h2>
