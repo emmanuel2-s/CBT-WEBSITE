@@ -12,9 +12,9 @@ function Login() {
     notifySuccess("Login successful");
   };
   return (
-    <div className="max-w-6xl mx-auto w-full">
-      <div className="flex justify-between items-center bg-white mt-16 px-4 mb-3 w-full rounded-3xl">
-        <img src={logImgBg} alt="/" className="w-[398px]" />
+    <div className="max-w-5xl mx-auto w-full">
+      <div className="flex justify-between items-center mt-10 bg-white px-4 w-full rounded-xl">
+        <img src={logImgBg} alt="/" className="w-[300px]" />
         <div className="w-full">
           <h2 className="text-center text-3xl uppercase font-semibold py-6 leading-10">
             Login Here
