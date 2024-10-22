@@ -110,7 +110,12 @@ function TeacherList() {
             onClose={closeModal}
             handleClick={"/"}
             value={"Upload"}
-          ></Modal>
+          >
+            <div className="flex justify-center flex-col items-center mt-10">
+              <img src="" alt="" />
+              <input type="file" name="file" id="file" className="mb-4" />
+            </div>
+          </Modal>
         )}
       </div>
     </div>
