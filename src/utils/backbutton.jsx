@@ -8,7 +8,7 @@ function Backbutton() {
   };
   return (
     <button
-      className="bg-black flex items-center float-left rounded text-white text-lg px-2 py-2"
+      className="bg-black flex items-center float-left rounded text-white text-lg px-3 py-2"
       onClick={backBtn}
     >
       <FaArrowLeftLong className="mr-1" />

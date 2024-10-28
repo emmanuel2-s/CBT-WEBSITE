@@ -1,14 +1,12 @@
 import React from "react";
 import Backbutton from "../../utils/backbutton";
+import CardHeader from "../CardHeader";
 
 function Class() {
   return (
-    <div className="max-w-[1440px] mx-auto w-full">
-      <div className="bg-white container rounded px-4 w-full mt-10 py-4">
-        <Backbutton />
-        <h1 className="text-lg uppercase text-center font-medium pb-12">
-          Class Setup
-        </h1>
+    <div className="container mx-auto w-full">
+      <div className="bg-white rounded px-4 w-full mt-10">
+        <CardHeader title="Class Setup" />
 
         <form className="flex items-center justify-center mt-10">
           <div className="block w-full md:w-6/12 mr-4">
@@ -36,13 +34,13 @@ function Class() {
           </div>
           <table className="table-auto w-full mt-4 team-table">
             <tr className="table-arrange">
-              <th className="whitespace-nowrap text-center px-4">Name</th>
+              <th className="whitespace-nowrap text-left px-4">Name</th>
               <th className="whitespace-nowrap text-center px-4">Action</th>
             </tr>
 
             <tbody>
               <tr>
-                <td className="whitespace-nowrap text-center px-4 font-medium">
+                <td className="whitespace-nowrap text-left px-4 font-medium">
                   JSS1
                 </td>
                 <td className="whitespace-nowrap text-center px-4">
@@ -57,7 +55,7 @@ function Class() {
                 </td>
               </tr>
               <tr>
-                <td className="whitespace-nowrap text-center px-4 font-medium">
+                <td className="whitespace-nowrap text-left px-4 font-medium">
                   JSS1
                 </td>
                 <td className="whitespace-nowrap text-center px-4">

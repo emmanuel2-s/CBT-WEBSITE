@@ -1,14 +1,12 @@
 import React from "react";
 import Backbutton from "../../../utils/backbutton";
+import CardHeader from "../../CardHeader";
 
 function CreateClass() {
   return (
     <div className="container mx-auto w-full">
-      <div className="bg-white container rounded px-4 w-full mt-10 py-4 overflow-auto">
-        <Backbutton />
-        <h1 className="text-xl uppercase text-center font-medium pb-12">
-          Create Class
-        </h1>
+      <div className="bg-white rounded px-4 w-full mt-10 pb-2 overflow-auto">
+        <CardHeader title="Create Class" />
 
         <form className="block w-full md:flex md:items-center md:justify-center mt-10">
           <div className="block w-full md:w-3/12 mr-4">
@@ -61,56 +59,58 @@ function CreateClass() {
               Save
             </button>
           </div>
-          <table className="table-auto w-full mt-4 team-table">
-            <tr className="table-arrange">
-              <th className="whitespace-nowrap text-center px-4">Class</th>
-              <th className="whitespace-nowrap text-center px-4">
-                Form-teacher
-              </th>
-              <th className="whitespace-nowrap text-center px-4">Action</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td className="whitespace-nowrap text-center px-4 font-medium">
-                  JSS1A
-                </td>
-                <td className="whitespace-nowrap text-center px-4 font-medium">
-                  Mrs Enebome
-                </td>
-                <td className="whitespace-nowrap text-center px-4">
-                  <div className="">
-                    <button className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3">
-                      Edit
-                    </button>
-                    <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
-                      Delete
-                    </button>
-                  </div>
-                </td>
+          <section className="bg-white pb-4 h-auto overflow-auto no-scrollbar">
+            <table className="table-auto w-full mt-4 team-table">
+              <tr className="table-arrange">
+                <th className="whitespace-nowrap text-center px-4">Class</th>
+                <th className="whitespace-nowrap text-center px-4">
+                  Form-teacher
+                </th>
+                <th className="whitespace-nowrap text-center px-4">Action</th>
               </tr>
-              <tr>
-                <td className="whitespace-nowrap text-center px-4 font-medium">
-                  JSS1B
-                </td>
 
-                <td className="whitespace-nowrap text-center px-4 font-medium">
-                  Mrs Tina
-                </td>
+              <tbody>
+                <tr>
+                  <td className="whitespace-nowrap text-center px-4 font-medium">
+                    JSS1A
+                  </td>
+                  <td className="whitespace-nowrap text-center px-4 font-medium">
+                    Mrs Enebome
+                  </td>
+                  <td className="whitespace-nowrap text-center px-4">
+                    <div className="">
+                      <button className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3">
+                        Edit
+                      </button>
+                      <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="whitespace-nowrap text-center px-4 font-medium">
+                    JSS1B
+                  </td>
 
-                <td className="whitespace-nowrap text-center px-4">
-                  <div className="">
-                    <button className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3">
-                      Edit
-                    </button>
-                    <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <td className="whitespace-nowrap text-center px-4 font-medium">
+                    Mrs Tina
+                  </td>
+
+                  <td className="whitespace-nowrap text-center px-4">
+                    <div className="">
+                      <button className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3">
+                        Edit
+                      </button>
+                      <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </div>
       </div>
     </div>

@@ -10,6 +10,8 @@ import CreateClass from "../components/pages/class/createClass";
 import ClassList from "../components/pages/class/classList";
 import TeacherList from "../components/pages/teacher/teacherList";
 import CreateTeacher from "../components/pages/teacher/createTeacher";
+import Dashboard from "../components/pages/Student/Dashboard";
+import ExamScreen from "../components/pages/Student/ExamScreen";
 
 function Routerpage() {
   return (
@@ -26,9 +28,10 @@ function Routerpage() {
           <Route path="/createteacher" Component={CreateTeacher} />
           <Route path="/createclass" Component={CreateClass} />
           <Route path="/classlist" Component={ClassList} />
-          <Route path="/student" Component={Arms} />
+          <Route path="/student" Component={Dashboard} />
           <Route path="/subject" Component={Arms} />
           <Route path="/result" Component={Arms} />
+          <Route path="/exam" Component={ExamScreen} />
         </Routes>
       </BrowserRouter>
     </>
