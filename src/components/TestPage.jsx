@@ -155,7 +155,7 @@ function TestPage() {
             onClick={handleStart}
             className="px-16 py-2 mt-8 bg-gray-600 text-white rounded hover:bg-gray-800 focus:outline-none"
           >
-            Start exam
+            Start Exam
           </button>
         </div>
       ) : (
