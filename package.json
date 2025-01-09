@@ -12,13 +12,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "dayjs": "^1.11.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
+    "react-hook-form": "^7.54.2",
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
+    "superagent": "^10.1.1",
+    "superagent-promise": "^1.1.0",
     "sweetalert2": "^11.14.2"
   },
   "devDependencies": {
