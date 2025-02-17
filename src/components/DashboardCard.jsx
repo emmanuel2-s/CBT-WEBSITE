@@ -9,7 +9,7 @@ function DashboardCard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full px-4">
           <Link
             to="/teacherlist"
-            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer"
+            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer hover:transition-all hover:duration-500 hover:ease-in-out"
           >
             <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
               <HiOutlineLibrary size={50} />
@@ -19,7 +19,7 @@ function DashboardCard() {
 
           <Link
             to="/classlist"
-            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer"
+            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer hover:transition-all hover:duration-500 hover:ease-in-out"
           >
             <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
               <HiOutlineLibrary size={50} />
@@ -29,7 +29,7 @@ function DashboardCard() {
 
           <Link
             to="/student"
-            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer"
+            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer hover:transition-all hover:duration-500 hover:ease-in-out"
           >
             <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
               <HiOutlineLibrary size={50} />
@@ -39,7 +39,7 @@ function DashboardCard() {
 
           <Link
             to="/exam"
-            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer"
+            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer hover:transition-all hover:duration-500 hover:ease-in-out"
           >
             <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
               <HiOutlineLibrary size={50} />
@@ -49,7 +49,7 @@ function DashboardCard() {
 
           <Link
             to="/result"
-            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer"
+            className="bg-white shadow rounded h-full py-6 p-4 hover:bg-gray-200 cursor-pointer hover:transition-all hover:duration-500 hover:ease-in-out"
           >
             <div className="flex justify-center items-center my-4 bg-slate-300 rounded-full w-20 h-20 mx-auto">
               <HiOutlineLibrary size={50} />
