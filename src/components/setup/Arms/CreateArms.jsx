@@ -5,12 +5,14 @@ import { MdEdit } from "react-icons/md";
 import { IoMdTrash } from "react-icons/io";
 import { notifyError, notifySuccess } from "../../../utils/toaster";
 import api from "../../../utils/api/api";
+import { useNavigate } from "react-router-dom";
 
 function Arms() {
   const [createArm, setCreateArm] = useState("");
   const [isvisible, setIsvisible] = useState(false);
   const [armList, setArmList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedArms = JSON.parse(localStorage.getItem("arms")) || [];
@@ -42,22 +44,34 @@ function Arms() {
     const localDetails = JSON.parse(localStorage.getItem("arms")) || [];
     if (localDetails.length === 0) {
       notifyError("No data to save");
+      setLoading(false);
       return;
     }
 
     try {
-      for (const arm of localDetails) {
-        const response = await api.arms.create(arm);
-        console.log("Save response:", response);
-      }
+      // for (const arm of localDetails) {
+      //   const response = await api.arms.create(arm);
 
-      notifySuccess("Data saved successfully");
-      setArmList([]);
-      localStorage.removeItem("arms");
-      setLoading(false);
+      // Use Promise.all to save all levels concurrently
+      const savePromises = localDetails.map((arm) => api.arms.create(arm));
+      const responses = await Promise.all(savePromises);
+
+      // Check responses for success or failure
+      const allSuccessful = responses.every((response) => response.isSuccess);
+
+      console.log("Save response:", responses);
+      if (allSuccessful) {
+        setArmList([]);
+        localStorage.removeItem("arms");
+        notifySuccess("Data saved successfully");
+        // setLoading(false);
+        navigate("/armslist");
+      }
     } catch (error) {
       console.log("Error", error);
       notifyError("Failed to save data");
+      setLoading(false);
+    } finally {
       setLoading(false);
     }
   };
@@ -114,14 +128,14 @@ function Arms() {
                   </td>
                   {/* <td className="whitespace-nowrap text-left px-4 font-medium"></td> */}
                   <td className="whitespace-nowrap text-center px-4">
-                    <div className="">
+                    {/* <div className="">
                       <button className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3">
                         <MdEdit />
-                      </button>
-                      <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
-                        <IoMdTrash />
-                      </button>
-                    </div>
+                      </button> */}
+                    <button className="py-2 px-4 rounded text-lg text-white bg-red-600">
+                      <IoMdTrash />
+                    </button>
+                    {/* </div> */}
                   </td>
                 </tr>
               ))}

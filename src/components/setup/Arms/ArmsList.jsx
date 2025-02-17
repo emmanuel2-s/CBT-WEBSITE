@@ -11,6 +11,8 @@ import Swal from "sweetalert2";
 import Modal from "../../../utils/Modal";
 import PlainTextField from "../../textFields/plainTextField";
 import { useForm } from "react-hook-form";
+import Skeleton from "react-loading-skeleton";
+import TableSkeleton from "../../tableSkeleton";
 
 function ArmsList() {
   const [armsList, setArmsList] = useState([]);
@@ -34,6 +36,7 @@ function ArmsList() {
   };
 
   const fetchArmsList = async () => {
+    setLoading(true);
     try {
       const resp = await api.arms.getAllArms();
       console.log("resp", resp);
@@ -41,10 +44,13 @@ function ArmsList() {
         a?.name?.localeCompare(b?.name)
       );
       setArmsList(data);
+      setLoading(false);
     } catch (error) {
       console.log("Error", error);
       notifyError(error.errorMessage);
+      setLoading(false);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -125,42 +131,53 @@ function ArmsList() {
             </Link>
           </div>
           <section className="bg-white pb-4 h-auto overflow-auto no-scrollbar">
-            <table className="table-auto w-full mt-4 team-table">
-              <tr className="table-arrange">
-                <th className="whitespace-nowrap text-left px-4">Name</th>
-                <th className="whitespace-nowrap text-left px-4">CreateBy</th>
-                <th className="whitespace-nowrap text-center px-4">Action</th>
-              </tr>
+            {loading ? (
+              <TableSkeleton />
+            ) : (
+              <table className="table-auto w-full mt-4 team-table">
+                <tr className="table-arrange">
+                  <th className="whitespace-nowrap text-left px-4">Name</th>
+                  <th className="whitespace-nowrap text-left px-4">CreateBy</th>
+                  <th className="whitespace-nowrap text-center px-4">Action</th>
+                </tr>
 
-              <tbody>
-                {armsList.map((arm, index) => (
-                  <tr key={index}>
-                    <td className="whitespace-nowrap text-left px-4 font-medium uppercase">
-                      {arm.name}
-                    </td>
-                    <td className="whitespace-nowrap text-left px-4 font-medium capitalize">
-                      {arm.createdBy}
-                    </td>
-                    <td className="whitespace-nowrap text-center px-4">
-                      <div className="">
-                        <button
-                          className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3"
-                          onClick={() => handleEdit(arm.id)}
-                        >
-                          <MdEdit />
-                        </button>
-                        <button
-                          className="py-2 px-4 rounded text-lg text-white bg-red-600"
-                          onClick={() => handleDelete(arm.id)}
-                        >
-                          <IoMdTrash />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                <tbody>
+                  {armsList.map((arm, index) => (
+                    <tr key={index}>
+                      <td className="whitespace-nowrap text-left px-4 font-medium uppercase">
+                        {arm?.name || <Skeleton />}
+                      </td>
+                      <td className="whitespace-nowrap text-left px-4 font-medium capitalize">
+                        {arm?.createdBy || <Skeleton />}
+                      </td>
+                      <td className="whitespace-nowrap text-center px-4">
+                        <div className="">
+                          <button
+                            className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3"
+                            onClick={() => handleEdit(arm?.id)}
+                          >
+                            <MdEdit />
+                          </button>
+                          <button
+                            className="py-2 px-4 rounded text-lg text-white bg-red-600"
+                            onClick={() => handleDelete(arm?.id)}
+                          >
+                            <IoMdTrash />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+            {armsList.length === 0 && (
+              <div>
+                <p className="text-center text-lg text-slate-300 capitalize pt-8">
+                  No arms record found
+                </p>
+              </div>
+            )}
           </section>
         </div>
       </div>

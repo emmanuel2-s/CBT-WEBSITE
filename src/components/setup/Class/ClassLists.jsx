@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import Modal from "../../../utils/Modal";
 import PlainTextField from "../../textFields/plainTextField";
+import TableSkeleton from "../../tableSkeleton";
 
 function ClassListSetup() {
   const [classList, setClassList] = useState([]);
@@ -33,23 +34,29 @@ function ClassListSetup() {
     reset();
   };
 
-  const fetchClassList = async () => {
-    try {
-      const resp = await api.classLevel.getAllClass();
-      console.log("resp", resp);
-      const data = resp.data.$values.sort((a, b) =>
-        a?.name?.localeCompare(b?.name)
-      );
-      setClassList(data);
-    } catch (error) {
-      console.log("Error", error);
-      notifyError(error.errorMessage);
-    }
-  };
-
   useEffect(() => {
     fetchClassList();
   }, []);
+
+  const fetchClassList = async () => {
+    setLoading(true);
+    try {
+      const resp = await api.classLevel.getAllClass();
+      console.log("resp", resp);
+      if (resp.isSuccess) {
+        const data = resp.data?.$values.sort((a, b) =>
+          a?.name?.localeCompare(b?.name)
+        );
+        setClassList(data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log("Error", error);
+      notifyError(error.errorMessage);
+      setLoading(false);
+    }
+    setLoading(false);
+  };
 
   const handleEdit = (id) => {
     setEditModalOpen(true);
@@ -113,7 +120,7 @@ function ClassListSetup() {
   return (
     <div className="container mx-auto w-full">
       <div className="bg-white rounded px-4 w-full mt-10 pb-2">
-        <CardHeader title="Class List" />
+        <CardHeader title="Class Level List" />
 
         <div className="mt-10 md:mt-20">
           <div className="flex justify-end">
@@ -125,42 +132,60 @@ function ClassListSetup() {
             </Link>
           </div>
           <section className="bg-white pb-4 h-auto overflow-auto no-scrollbar">
-            <table className="table-auto w-full mt-4 team-table">
-              <tr className="table-arrange">
-                <th className="whitespace-nowrap text-left px-4">Name</th>
-                <th className="whitespace-nowrap text-left px-4">CreateBy</th>
-                <th className="whitespace-nowrap text-center px-4">Action</th>
-              </tr>
-
-              <tbody>
-                {classList.map((level, index) => (
-                  <tr key={index}>
-                    <td className="whitespace-nowrap text-left px-4 font-medium uppercase">
-                      {level.name}
-                    </td>
-                    <td className="whitespace-nowrap text-left px-4 font-medium">
-                      {level.createdBy}
-                    </td>
-                    <td className="whitespace-nowrap text-center px-4">
-                      <div className="">
-                        <button
-                          className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3"
-                          onClick={() => handleEdit(level.id)}
-                        >
-                          <MdEdit />
-                        </button>
-                        <button
-                          className="py-2 px-4 rounded text-lg text-white bg-red-600"
-                          onClick={() => handleDelete(level.id)}
-                        >
-                          <IoMdTrash />
-                        </button>
-                      </div>
-                    </td>
+            {loading ? (
+              <TableSkeleton />
+            ) : (
+              <table className="table-auto w-full mt-4 team-table">
+                <thead>
+                  <tr className="table-arrange">
+                    <th className="whitespace-nowrap text-left px-4">Name</th>
+                    <th className="whitespace-nowrap text-left px-4">
+                      CreateBy
+                    </th>
+                    <th className="whitespace-nowrap text-center px-4">
+                      Action
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {classList.map((level, index) => (
+                    <tr key={index}>
+                      <td className="whitespace-nowrap text-left px-4 font-medium uppercase">
+                        {level.name}
+                      </td>
+                      <td className="whitespace-nowrap text-left px-4 font-medium capitalize">
+                        {level.createdBy}
+                      </td>
+                      <td className="whitespace-nowrap text-center px-4">
+                        <div className="">
+                          <button
+                            className="py-2 px-4 rounded text-lg text-black bg-gray-300 mr-3"
+                            onClick={() => handleEdit(level.id)}
+                          >
+                            <MdEdit />
+                          </button>
+                          <button
+                            className="py-2 px-4 rounded text-lg text-white bg-red-600"
+                            onClick={() => handleDelete(level.id)}
+                          >
+                            <IoMdTrash />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+
+            {classList.length === 0 && (
+              <div>
+                <p className="text-center text-lg text-slate-300 capitalize pt-8">
+                  No Class record found
+                </p>
+              </div>
+            )}
           </section>
         </div>
       </div>
@@ -169,8 +194,8 @@ function ClassListSetup() {
           isOpen={openModal}
           onClose={closeModal}
           handleClick={handleSubmit(handleUpdate)}
-          value={"Update Arm"}
-          header="Edit Arm Modal"
+          value={"Update Class"}
+          header="Edit Class Modal"
         >
           <div>
             <PlainTextField
@@ -182,6 +207,7 @@ function ClassListSetup() {
                 required: true,
                 onChange: (e) => setFormData(e.target.value),
               })}
+              className="uppercase"
             />
           </div>
         </Modal>

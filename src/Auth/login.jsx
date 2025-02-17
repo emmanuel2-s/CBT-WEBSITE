@@ -18,13 +18,13 @@ function Login() {
       userName: username,
       password,
     };
-    setLoading(true);
 
     try {
+      setLoading(true);
       const response = await api.Auth.login(payload);
       console.log(response);
       if (response.token) {
-        setLoading(false);
+        // setLoading(false);
         navigate("/home");
         notifySuccess("Login successful");
       }
@@ -33,8 +33,9 @@ function Login() {
       console.log("Error:", error);
       notifyError("Wrong Credential");
       setLoading(false);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
 
     // if (username === student && password === pass) {
     //   navigate("/student");

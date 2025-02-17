@@ -259,8 +259,16 @@ const Auth = {
     currentUser: () => JSON.parse(window.localStorage.getItem("auth")),
     register: (data) => requests.post("/Account/register", data),
     login: (data) => requests.put("/Account/login", data),
-    addRole: (name) => requests.post("/Account/add-role", { name }),
-    getRoles: () => requests.get("/Account/all-roles")
+    addRole: (data) => requests.post("/Account/add-role", data),
+    getRoles: () => requests.get("/Account/all-roles"),
+    deleteRole: (id) => requests.del(`/Account/delete-role/${id}`),
+    deleteUser: (id) => requests.del(`/Account/delete-user/${id}`),
+    updateUser: (id, data) => requests.post(`/Account/update-user/${id}`, data),
+    enableUser: (id, data) => requests.post(`/Account/enable-user/${id}`, data),
+    disableUser: (id, data) => requests.post(`/Account/disableUser/${id}`, data),
+
+
+    getAllUser: () => requests.get("/Account/all-users")
 };
 
 
@@ -280,6 +288,16 @@ const classLevel = {
     delete: (id) => requests.del(`/ClassLevel/${id}`)
 }
 
+
+const subjects = {
+    create: (data) => requests.post("/subjects", data),
+    getSubjects: () => requests.get("/subjects"),
+    update: (id, data) => requests.put(`/subjects/${id}`, data),
+    delete: (id) => requests.del(`/subjects/${id}`)
+
+
+}
+
 const user = {
     load: () => requests.get("/users"),
     create: (data) => requests.post("/users", data),
@@ -295,7 +313,8 @@ const api = {
     Auth,
     user,
     arms,
-    classLevel
+    classLevel,
+    subjects
 };
 
 export default api;

@@ -16,6 +16,7 @@ import ProtectedRoute from "./protectedRoute";
 import ClassListSetup from "../components/setup/Class/ClassLists";
 import ArmsList from "../components/setup/Arms/ArmsList";
 import SubjectList from "../components/setup/Subjects/SubjectList";
+import Role from "../components/pages/roles/addRole";
 // import ProtectedRoute from "../Auth/protectedRoute"
 
 function Routerpage() {
@@ -56,10 +57,13 @@ function Routerpage() {
         />
         {/* setup end  */}
 
+        <Route path="/rolelist" element={<ProtectedRoute Component={Role} />} />
+
         <Route
           path="/teacherlist"
           element={<ProtectedRoute Component={TeacherList} />}
         />
+
         <Route
           path="/createteacher"
           element={<ProtectedRoute Component={CreateTeacher} />}
